@@ -2,6 +2,6 @@ import modul
 
 status = modul.random_state()
 print(status)
-to_status = modul.to_str(status)
-print(to_status)
-modul.print_matrix(to_status)
+status_str = modul.status_to_str(status)
+modul.print_matrix(status_str)
+

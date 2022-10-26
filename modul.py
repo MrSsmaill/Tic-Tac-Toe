@@ -9,28 +9,29 @@ def random_state() -> list:
     return status
 
 
-def to_str(status: list) -> list:
-    status_str = []
-    i = 0
-    for elem in status:
-        for value in elem:
-            if value == 0 and i > 5:
-                status_str.append(' ')
-            elif value == 0:
-                status_str.append('_')
-            elif value == 1:
-                status_str.append('X')
-            elif value == 2:
-                status_str.append('O')
-            i += 1
+def status_to_str(status: list) -> str:
+    status_str = str()
+    for i in range(3):
+        for j in range(3):
+            if i != 2:
+                a = '_'
+            else:
+                a = ' '
+            if status[i][j] == 0 and i != 2:
+                status_str += a + '_' + a
+            elif status[i][j] == 1:
+                status_str += a + 'X' + a
+            elif status[i][j] == 2:
+                status_str += a + 'O' + a
+            elif status[i][j] == 0 and i == 2:
+                status_str += a + ' ' + a
+            if j == 2:
+                status_str += '\n'
+            else:
+                status_str += '|'
+
     return status_str
 
 
-def print_matrix(status: list):
-    i = 0
-    while i < len(status):
-        if i > 5:
-            print(' {} | {} | {} '.format(status[i], status[i + 1], status[i + 2]))
-        else:
-            print('_{}_|_{}_|_{}_'.format(status[i], status[i + 1], status[i + 2]))
-        i += 3
+def print_matrix(status_str: str):
+    print(status_str)
